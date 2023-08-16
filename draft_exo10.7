@@ -1,0 +1,67 @@
+Adresse     Adresse     code        mnémonique      commentaire
+(base 10)   (hexa) 
+80            50          49        IN α 70         entrer une valeur dans adresse 70  
+81            51          70 
+82            52          40        LOAD α 70       charger cette valeur
+83            53          70 
+84            54          48        STORE α 71      ecrire cette valeur dans l'adresse 71   (variable a)
+85            55          71
+86            56          48        STORE α 72      ecrire cette valeur dans l'adresse 72 aussi (variable b)
+87            57          72
+88            58          00        LOAD # 5E       charger la "5E" dans l'accumulateur
+89            59          5E
+90            5A          48        STORE α 8D      ecrire "5E" a l'adresse "8D"    (la fin du programme) (créer un jump sur 5E a la fin du programme)
+91            5B          8D
+92            5C          10        JUMP α 74       Jump à l'adresse 74 -->
+93            5D          74
+94            5E          40        LOAD α 71       charger le résultat dans l'accumulateur
+95            5F          71
+96            60          48        STORE α 72      l'écrire à l'adresse 72
+97            61          72
+98            62          40        LOAD α 70       charger le nombre initial dans l'accumulateur 
+99            63          70
+100           64          48        STORE α 71      l'ecrire à l'adresse 71
+101           65          71
+102           66          00        LOAD # 6C       charger "6C" dans l'accumulateur
+103           67          6C
+104           68          48        STORE α 8D      ecrire "6C" à l'adresse "8D"     (la fin du programme) (créer un jump sur 6C a la fin du programme)
+105           69          8D
+106           6A          10        JUMP α 74       jump à l'adresse 74
+107           6B          74
+108           6C          41        OUT α 71        
+109           6D          71
+110           6E          10        JUMP α 6E
+112           6F          6E        (clause de fin)
+113           70          00
+114           71          00                        
+115           72          00                        
+116           73          00                        
+116           74          00        LOAD # 00       charger "00" dans l'accumulateur
+117           75          00 
+118           76          48        STORE α 73      ecrire "00" a l'adresse 73              (variable c)
+119           77          73
+120           78          40        LOAD α 71       charger la valeur de l'adresse 71 (ici 2) 
+121           79          71
+122           7A          12        BRZ α 88        si A = "00" --> Brancher sur 88        
+123           7B          88
+124           7C          21        SUB # 01        decrémenter de 1                 
+125           7D          01
+126           7E          48        STORE α 71      ecrire le résultat a l'adresse 71       (decrementer a)
+127           7F          71                  
+127           80          40        LOAD α 73       charger la valeur de l'adresse 73 
+128           81          73 
+129           82          60        ADD α 72        additioner la valeur à l'adresse 72 (variable c + a) (equivaut: a + a )
+130           83          72 
+131           84          48        STORE α 73      ecraser la valeur à l'adresse 73 avec le résultat du calcul
+132           85          73 
+133           86          10        JUMP α 78       
+134           87          78 
+135           88          40        LOAD α 73       charger le résultat 
+136           89          73 
+137           8A          48        STORE α 71      ecraser variable a avec le resultat
+138           8B          71 
+139           8C          10        JUMP α 00       Jump sur 5E
+140           8D          00                        //phase 1 --> 5E  // phase 2 --> 6C  
+
+
+// le programme est le suivant  eleve le nombre saisie à la puissance 3
